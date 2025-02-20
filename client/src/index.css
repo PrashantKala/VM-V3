@@ -1,0 +1,495 @@
+#root {
+    font-family: Arial, sans-serif;
+    /* max-width: 1280px; */
+    margin: 0 auto;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
+    text-align: center;
+    /* background-color: white; */
+  }
+  
+  
+  
+  /* Container for the entire login form */
+  .mainContainer {
+    max-width: 30%;
+    margin: 0 auto;
+  
+    padding-top: 15vh;
+    /* background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; */
+    text-align: center;
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+  }
+  
+  /* Logo/image at the top */
+  .mainContainer img {
+    width: 80px;
+    /* margin-bottom: 20px; */
+  }
+  
+  /* Heading */
+  .mainContainer h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333333;
+  }
+  
+  /* Subtitle or link to register */
+  .mainContainer p {
+    margin-bottom: 20px;
+    color: #777777;
+    font-size: 0.65rem;
+    text-decoration: none;
+    /* border: 2px solid black; */
+  }
+  
+  .checkin{
+    width: 80%;
+    gap: 42%;
+    font-size: 0.65rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* height: 10px; */
+    /* border: 2px solid black; */
+    padding: 0px;
+  }
+  
+  
+  
+  .checkin label input{
+    position: relative;
+    top: 8%;
+    /* margin-top: 10px; */
+    padding: 0px;
+    /* border: 2px solid black; */
+  }
+  
+  .checkin label {
+    display: none;
+    position: relative;
+    top: 8%;
+    /* margin-top: 10px; */
+    padding: 0px;
+    /* border: 2px solid black; */
+  }
+  .checkin label {
+    position: relative;
+    top: 8%;
+    /* margin-top: 10px; */
+    padding: 0px;
+    /* border: 2px solid black; */
+  }
+  .no-style-link {
+    text-decoration: none; /* Removes the underline */
+    color: #007BFF;
+    /* color: inherit; Inherits color from parent element */
+  }
+  
+  .mainContainer p span {
+    color: #007BFF;
+    /* font-size: 0.9rem; */
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-style: normal;
+    
+    /* color: #007BFF; */
+  }
+  
+  .inputContainer{
+    width: 80%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-items: center;
+    /* margin: 0 auto; */
+    /* border: 5px solid #dddddd; */
+    box-shadow: 0px 0px 5px 2px #f6f6f6;
+    border-radius: 4px;
+    gap: 2px;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields container */
+  /* .input { */
+    /* display: flex; */
+    /* position: relative; */
+    /* align-items: center;
+    justify-content: center;
+    padding: 0px;
+    width: 25vw;
+    height: 5vh;
+    transition: all 0.3s ease; */
+    /* border: 1px solid #dddddd; */
+  /* } */
+  
+  
+  
+  /* .moveUpEmail */
+  
+  .moveUpEmail {
+    /* border: 2px solid black; */
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    position: relative;
+    top: 7px;
+    left: -27%;
+    font-size: xx-small;
+  }
+  
+  .moveUpPassword{
+    display: flex;
+    gap: 5px;
+    background-color: white;
+    position: relative;
+    bottom: 30px;
+    left: -28%;
+    font-size: xx-small;
+  }
+  
+  .moveUpEmail p{
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .moveUpEmail img{
+    margin-top: 1px;
+    width: 15px;
+    height: 15px;
+  }
+  
+  .moveUpPassword img{
+    margin-top: 1px;
+    width: 15px;
+    height: 15px;
+  }
+  /* Icons inside the input fields */
+  .inputContainer img {
+    /* position: absolute; */
+    /* left: 10px; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    margin-right: 2%;
+    margin-left: 2%;
+    padding: 0px;
+    /* padding-right: 2%; */
+    /* border: 1px solid black; */
+  }
+  /* 
+  .textField{
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 5vh;
+  } */
+  
+  .emailIcon {
+    position: relative;
+    /* left: 10px; */
+    transition: all 0.3s ease;
+  }
+  
+  .focused .emailIcon {
+    background-color: white;
+    top: -22px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.8;
+    opacity: .5;
+  }
+  
+  .verifyEmailIcon {
+    position: relative;
+    /* left: 10px; */
+    transition: all 0.3s ease;
+  }
+  
+  .focused .verifyEmailIcon {
+    background-color: white;
+    top: -18px;
+    /* left: 5px; */
+    width: 15px;
+    height: 15px;
+    opacity: 0.8;
+    opacity: .5;
+  }
+  
+  .emailLabel {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 40.5vw; /* Same as the input padding */
+    top: 37vh;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: grey;
+    transition: all 0.3s ease;
+    pointer-events: none; /* To prevent the label from blocking input clicks */
+  }
+  
+  
+  .focused .emailLabel {
+    background-color: white;
+    opacity: .8;
+    display: block;
+    /* top: -10px; */
+    /* left: -40px; */
+    font-size: 12px;
+    color: #000; /* Label becomes more visible when moved */
+  }
+  
+  .verifyEmailLabel {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 40.5vw; /* Same as the input padding */
+    top: 39.4vh;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: grey;
+    transition: all 0.3s ease;
+    pointer-events: none; /* To prevent the label from blocking input clicks */
+  }
+  
+  
+  .focused .verifyEmailLabel {
+    background-color: white;
+    opacity: .8;
+    display: block;
+    /* top: -10px; */
+    /* left: -40px; */
+    font-size: 12px;
+    color: #000; /* Label becomes more visible when moved */
+  }
+  
+  .passwordLabel {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 40.5vw; /* Same as the input padding */
+    top: 45.2vh;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: grey;
+    transition: all 0.3s ease;
+    pointer-events: none; /* To prevent the label from blocking input clicks */
+  }
+  
+  
+  .focused .passwordLabel {
+    background-color: white;
+    opacity: .8;
+    display: block;
+    /* top: -10px; */
+    /* left: -40px; */
+    font-size: 12px;
+    color: #000; /* Label becomes more visible when moved */
+  }
+  
+  .ConfirmpasswordLabel1 {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 40.5vw; /* Same as the input padding */
+    top: 37vh;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: grey;
+    transition: all 0.3s ease;
+    pointer-events: none; /* To prevent the label from blocking input clicks */
+  }
+  
+  
+  .focused .ConfirmpasswordLabel1 {
+    background-color: white;
+    opacity: .8;
+    display: block;
+    /* top: -10px; */
+    /* left: -40px; */
+    font-size: 12px;
+    color: #000; /* Label becomes more visible when moved */
+  }
+  
+  
+  /* Input fields styling */
+  .input input {
+    /* padding-left: 40px;  */
+    width: 70%;
+    /* padding: 10px 10px 10px 10px; */
+    border: none;
+    outline: none;
+    /* border: 1px solid red; */
+    /* border-radius: 4px; */
+    font-size: 1rem;
+  }
+  
+  /* Password visibility toggle button */
+  .inputContainer button {
+    /* position: absolute; */
+    /* right: 10px; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    /* margin: 0px; */
+    margin-right: 10px;
+  }
+  
+  .input div{
+    /* display: flex; */
+    width: 10%;
+    /* border: 5 px solid black; */
+    /* margin-left: 2%; */
+    /* border: 2px solid black; */
+    /* margin: 0px; */
+    padding-bottom: 1%;
+    padding-left: 4%;
+  }
+  
+  .input button img {
+    width: 20px;
+    height: 20px;
+    /* margin: 0px; */
+    /* padding: 0%; */
+  }
+  
+  /* Forgot password link */
+  
+  
+  /* Login button */
+  .loginButton {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+  }
+  
+  .error-Button{
+    padding: 12px 0;
+    background-color: #e74747;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+    margin: 0px;
+    width: 80%;
+  }
+  
+  .errorButton{
+    width: 100%;
+    background-color: #e74747;
+    padding: 3px 0;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+    margin: 0px;
+    width: 80%;
+    /* padding: 0px; */
+  }
+  
+  .errorButton span {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    font-size: 12px;  /* Smaller font for the second line */
+    /* margin-top: 4px;  Add a bit of spacing between lines */
+    text-transform: none; /* No uppercase */
+  }
+  
+  .loginButton:hover {
+    background-color: #00aeff;
+  }
+  .errorButton:hover {
+    background-color: #f26d6d;
+  }
+  .error-Button:hover {
+    background-color: #f26d6d;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .mainContainer{
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 480px) {
+    .mainContainer {
+      /* padding: 15px; */
+      /* width: 100%; */
+      max-width: 100%;
+    }
+  
+    .mainContainer h3 {
+      font-size: 1.3rem;
+    }
+  
+    .mainContainer p {
+      font-size: 0.8rem;
+    }
+  
+    .input input {
+      padding: 8px 8px 8px 35px;
+    }
+  
+    .mainContainer button[type='submit'] {
+      padding: 10px 0;
+      font-size: 0.9rem;
+    }
+  }
+
+
+
+  
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    gap: 5px;
+  }
+  
+  .buttons button{
+    width: 49%;
+  }
+  
+  button{
+    background-color: transparent;
+    outline: none;
+  }
+  
+  .cancelButton{
+    width: 100%;
+    padding: 12px 0;
+    background-color: #f2f2f2;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+  }
+  
