@@ -13,7 +13,7 @@
   /* background-color: #1a202c;  */
   color: black;
   padding: 1rem 2rem 0rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   /* Add subtle shadow */
 }
 
@@ -286,10 +286,10 @@ table td a:hover {
 
 .tab {
   position: relative;
-  background: #f0f0f0;
+  /* background: #f0f0f0; */
   border-radius: 10px;
-  width: 120px;
-  height: 160px;
+  /* width: 120px; */
+  /* height: 160px; */
   text-align: center;
   padding: 10px;
   display: flex;
@@ -335,6 +335,7 @@ table td a:hover {
   bottom: 0;
   left: -340px; /* Initially hidden */
   width: 300px;
+  /* border: 5px solid black; */
   height: 90%;
   background-color: #fff;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -347,9 +348,17 @@ table td a:hover {
   left: 0; /* Slide in when open */
 }
 
+.asset-dropdown{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+}
+
 
 .left-drawer-content {
   padding: 20px;
+  overflow-y: auto;
+  /* width: 500px; */
 }
 
 
@@ -362,6 +371,7 @@ table td a:hover {
   flex: 1;
   position: relative;
   width:100%;
+  gap: 2rem;
   /* border: 2px solid yellow; */
 }
 
@@ -378,6 +388,7 @@ table td a:hover {
   flex: 1;
   padding: 5px;
   flex-direction: row;
+
 }
 
 
@@ -392,12 +403,22 @@ table td a:hover {
 .asset-items {
   display: flex;
   /* flex-wrap: wrap; */
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   gap: 5rem;
   /* border: 2px solid yellow; */
+  overflow-y: auto;
 }
 
+
+.asset-items-holder{
+  flex-shrink: 0; 
+  margin: auto;
+  /* flex-direction: column; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
 
 .asset-card {
   /* width: 120px; */
@@ -678,6 +699,7 @@ table td a:hover {
 /* Container Styling */
 .app-container {
   /* border: 5px solid yellow; */
+  margin-left: 20px;
   display: flex;
   height: 89vh;
   position: relative;
@@ -1159,7 +1181,7 @@ table td a:hover {
 
 /* Chatbot Toggle Button */
 .chatbot-toggle {
-  background-color: #007bff;
+  background-color: #16489b;
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -1230,7 +1252,7 @@ table td a:hover {
 
 /* Chatbot Header */
 .chatbot-header {
-  background-color: #007bff;
+  background-color: #16489b;
   color: white;
   padding: 15px;
   display: flex;
@@ -1280,7 +1302,7 @@ table td a:hover {
 }
 
 .message.user .message-content {
-  background-color: #007bff;
+  background-color: #16489b;
   color: white;
   border-radius: 10px 10px 0 10px;
 }
@@ -1316,6 +1338,12 @@ table td a:hover {
 }
 
 /* Chatbot Input */
+.chatbot-header div {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds spacing between the title and the button */
+}
+
 .chatbot-input {
   display: flex;
   border-top: 1px solid #ddd;
@@ -1332,7 +1360,7 @@ table td a:hover {
 }
 
 .chatbot-input button {
-  background-color: #007bff;
+  background-color: #16489b;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -1344,6 +1372,19 @@ table td a:hover {
 
 .chatbot-input button:hover {
   background-color: #0056b3;
+}
+
+.new-chat-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.new-chat-button img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 }
 
 /* Responsive Design */

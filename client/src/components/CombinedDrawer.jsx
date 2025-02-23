@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AssetDrawer from "./AssetDrawer";
 import Drawer from "./Drawer";
+
 const CombinedDrawer = ({
   setDrawer1,
   toggleDrawer1,
@@ -16,12 +17,12 @@ const CombinedDrawer = ({
   openLeftDrawer,
   setSelectedAsset,
   closeLeftDrawer,
-  activeTab,
+  selectedTabs, // Use selectedTabs instead of activeTab
   assets,
   toggleDisplay,
   closeDrawer,
   selectedServiceInfo,
-  setIsDrawerOpen
+  setIsDrawerOpen,
 }) => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
 
@@ -31,8 +32,6 @@ const CombinedDrawer = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
-
   useEffect(() => {
     if (isLeftDrawerOpen) {
       setDrawer1(true);
@@ -40,8 +39,6 @@ const CombinedDrawer = ({
       setDrawer1(false);
     }
   }, [isLeftDrawerOpen]);
-
-
 
   const DrawerToggleButton = ({ isOpen, toggle }) => (
     <button className={isOpen ? "drawer-close" : "drawer-open"} onClick={toggle}>
@@ -57,12 +54,12 @@ const CombinedDrawer = ({
 
   const renderDrawerContent = () => {
     if (drawer1) {
-      return activeTab ? (
+      return selectedTabs.length > 0 ? (
         <AssetDrawer
           onSelectAsset={setSelectedAsset}
           closeLeftDrawer={closeLeftDrawer}
-          activeTab={activeTab}
-          selectedTab={assets[activeTab]}
+          selectedTabs={selectedTabs} // Pass selectedTabs
+          assets={assets} // Pass assets
         />
       ) : (
         <h2>Please select a tab</h2>
@@ -70,7 +67,11 @@ const CombinedDrawer = ({
     }
     if (drawer2) {
       return selectedAsset ? (
-        <Drawer key={seed} selectedServiceInfo={selectedServiceInfo} selectedAsset={selectedAsset} />
+        <Drawer
+          key={seed}
+          selectedServiceInfo={selectedServiceInfo}
+          selectedAsset={selectedAsset}
+        />
       ) : (
         <h2>Please select an asset</h2>
       );

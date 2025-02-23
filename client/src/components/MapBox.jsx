@@ -20,7 +20,7 @@ function MapBox({
   resetCall,
   reset,
   setIsVisible,
-  closeTab,
+  selectedTabs, // Add selectedTabs prop
   onSelectAsset,
   selectedAsset,
   openDrawer,
@@ -34,20 +34,20 @@ function MapBox({
   const initializeMap = () => {
     if (!mapRef.current) {
       const map = L.map('map', {
-        minZoom: 3, // Set minimum zoom level
-        maxZoom: 13, // Set maximum zoom level
-        zoomControl: false, // Disable zoom controls
+        minZoom: 3,
+        maxZoom: 13,
+        zoomControl: false,
         maxBounds: [
-          [-90, -180], // Southwest corner of the bounds
-          [90, 180], // Northeast corner of the bounds
+          [-90, -180],
+          [90, 180],
         ],
-        maxBoundsViscosity: 1.0, // Prevent the map from being dragged outside the bounds
+        maxBoundsViscosity: 1.0,
       }).setView([39.8283, -98.5795], 4);
       mapRef.current = map;
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        noWrap: true, // Prevent tile repeating
+        noWrap: true,
       }).addTo(map);
     }
   };
@@ -119,16 +119,26 @@ function MapBox({
     marker.on('popupclose', () => handlePopupClose(marker));
   };
 
-  const addMarkers = (whoIsActive, assets, map) => {
-    if (whoIsActive === null) {
+  const addMarkers = (selectedTabs, assets, map) => {
+    // Clear existing markers
+    Object.values(markersRef.current).forEach((marker) => marker.remove());
+    markersRef.current = {};
+
+    if (selectedTabs.length === 0) {
+      // If no tabs are selected, show all assets
       for (const key in assets) {
         assets[key].forEach((category) => {
           category.items.forEach((item) => createMarker(item, map, key));
         });
       }
     } else {
-      assets[whoIsActive].forEach((category) => {
-        category.items.forEach((item) => createMarker(item, map, whoIsActive));
+      // Show assets for selected tabs
+      selectedTabs.forEach((tab) => {
+        if (assets[tab]) {
+          assets[tab].forEach((category) => {
+            category.items.forEach((item) => createMarker(item, map, tab));
+          });
+        }
       });
     }
   };
@@ -140,7 +150,7 @@ function MapBox({
       const root = createRoot(rootElement);
       root.render(
         <CustomCard
-        toggleDrawer2={toggleDrawer2}
+          toggleDrawer2={toggleDrawer2}
           setIsImageModalOpen={setIsImageModalOpen}
           selectedServiceInfo={selectedServiceInfo}
           key={key}
@@ -167,7 +177,6 @@ function MapBox({
       setWhoIsActive(key);
     }
 
-    closeTab(key);
     setIsCustomCard(true);
   };
 
@@ -180,7 +189,7 @@ function MapBox({
 
   useEffect(() => {
     initializeMap();
-    addMarkers(whoIsActive, assets, mapRef.current);
+    addMarkers(selectedTabs, assets, mapRef.current);
 
     return () => {
       if (mapRef.current) {
@@ -188,7 +197,7 @@ function MapBox({
         mapRef.current = null;
       }
     };
-  }, [whoIsActive, assets]);
+  }, [selectedTabs, assets]); // Add selectedTabs to the dependency array
 
   useEffect(() => {
     if (selectedAsset && mapRef.current) {

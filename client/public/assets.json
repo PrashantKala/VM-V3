@@ -1,5 +1,9 @@
 {
   "change": 1,
+  "assetImages":[
+    "/images/cctv.png",
+    "/images/satellite.png"
+  ],
   "asset": {
     "In-Cloud": [
       {

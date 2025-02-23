@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from "react";
 
-const AssetDrawer = ({closeLeftDrawer,onSelectAsset, activeTab, selectedTab }) => {
+const AssetDrawer = ({ closeLeftDrawer, onSelectAsset, selectedTabs, assets }) => {
   const statusColors = {
     poweringon: "black",
     poweredoff: "grey",
@@ -9,38 +9,62 @@ const AssetDrawer = ({closeLeftDrawer,onSelectAsset, activeTab, selectedTab }) =
     error: "red",
   };
 
+  // State to track which tabs are expanded
+  const [expandedTabs, setExpandedTabs] = useState({});
+
+  // Toggle the expanded state of a tab
+  const toggleTab = (tab) => {
+    setExpandedTabs((prev) => ({
+      ...prev,
+      [tab]: !prev[tab], // Toggle the expanded state
+    }));
+  };
+
   const selectAsset = (asset) => {
-    // closeLeftDrawer()
     onSelectAsset(asset);
   };
 
   return (
     <div className="left-drawer-content">
-      <h2>{activeTab}</h2>
-        <div className="category-container">
-          {selectedTab?.map(({ category, items }) => (
-            <div key={category} className="asset-category">
-              <h3 className="category-title">{category}</h3>
-              <div className="asset-items">
-                {items.map((asset) => (
-                  <div className="asset-items-holder" key={asset.name}>
-                    <div className={`asset-card ${asset.status}`}>
-                      <div className={`status-dot ${statusColors[asset.status]}`}></div>
-                      <img
-                        style={window.innerWidth < 768 && asset.name.startsWith('Submarine') ? { width: '60px' } : {}}
-                        src={asset.icon}
-                        alt={asset.name}
-                        className="asset-icon"
-                        onClick={() => selectAsset(asset)}
-                      />
-                    </div>
-                    <div className="asset-name">{asset.name}</div>
+      {selectedTabs.map((tab) => (
+        <div className="asset-dropdown" key={tab}>
+          {/* Tab header with click handler to toggle dropdown */}
+          <h3 onClick={() => toggleTab(tab)} style={{ cursor: "pointer" }}>
+            {tab} {expandedTabs[tab] ? "▲" : "▼"}
+          </h3>
+          {/* Dropdown content */}
+          {expandedTabs[tab] && (
+            <div className="category-container">
+              {assets[tab]?.map(({ category, items }) => (
+                <div key={category} className="asset-category">
+                  <h3 className="category-title">{category}</h3>
+                  <div className="asset-items">
+                    {items.map((asset) => (
+                      <div className="asset-items-holder" key={asset.name}>
+                        <div className={`asset-card ${asset.status}`}>
+                          <div className={`status-dot ${statusColors[asset.status]}`}></div>
+                          <img
+                            style={
+                              window.innerWidth < 768 && asset.name.startsWith("Submarine")
+                                ? { width: "60px" }
+                                : {}
+                            }
+                            src={asset.icon}
+                            alt={asset.name}
+                            className="asset-icon"
+                            onClick={() => selectAsset(asset)}
+                          />
+                        </div>
+                        <div className="asset-name">{asset.name}</div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
+      ))}
     </div>
   );
 };

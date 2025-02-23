@@ -90,7 +90,7 @@ const Login = () => {
             <form className='mainContainer' onSubmit={handleSubmit}>
                 <img src={isError ? invalidCredentials : Login_first} alt='Login' />
                 <h3>Log on to your Account</h3>
-                <p>Not a user yet? <span> <Link className='no-style-link' to='/register'>Register now</Link> </span> for a free demo.</p>
+                {/* <p>Not a user yet? <span> <Link className='no-style-link' to='/register'>Register now</Link> </span> for a free demo.</p> */}
 
                 <CustomInput
                     onChange={handleChange}
