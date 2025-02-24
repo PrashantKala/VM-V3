@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AssetDrawer from "./AssetDrawer";
 import Drawer from "./Drawer";
+import asset_icon from "../images/assets_icon.png"
+import properties_icon from "../images/properties_icon.png"
 
 const CombinedDrawer = ({
   setDrawer1,
@@ -42,13 +44,15 @@ const CombinedDrawer = ({
 
   const DrawerToggleButton = ({ isOpen, toggle }) => (
     <button className={isOpen ? "drawer-close" : "drawer-open"} onClick={toggle}>
-      {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"}
+      {/* {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"} */}
+      <img src={asset_icon} style={{width:"20px"}} />
     </button>
   );
 
   const LeftDrawerToggleButton = ({ isOpen, toggle }) => (
     <button className={isOpen ? "asset-drawer-close" : "asset-drawer-open"} onClick={toggle}>
-      {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"}
+      {/* {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"} */}
+      <img src={properties_icon} style={{width:"20px"}} />
     </button>
   );
 

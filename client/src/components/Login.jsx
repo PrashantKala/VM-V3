@@ -35,7 +35,7 @@ const Login = () => {
             const currentTime = new Date().getTime();
             const timeDifference = currentTime - parsedUser.timestamp;
 
-            if (timeDifference > 15*60000) {
+            if (timeDifference > 15*600000) {
                 localStorage.removeItem('user');
                 console.log("Stored data expired and was removed from localStorage");
             }

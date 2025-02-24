@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "/images/logo.png";
-import mobile_logo from "/images/480_logo.png";
+import logo from "/app/images/logo.png";
+import mobile_logo from "/app/images/480_logo.png";
 
 const Navbar = ({setDrawer2,drawer2, setDrawer1,tabImages, openLeftDrawer, setWhoIsActive, selectedTabs, toggleTabSelection, tabs, setinfoSelectedAsset, onSelectAsset, openDrawer, closeDrawer }) => {
   const [hovered, setHovered] = useState(false);

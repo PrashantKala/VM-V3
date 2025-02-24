@@ -1,796 +1,447 @@
 {
-  "change": 1,
-  "assetImages":[
-    "/images/cctv.png",
-    "/images/satellite.png"
-  ],
-  "asset": {
-    "In-Cloud": [
-      {
-        "category": "Frictionless",
-        "items": [
-          {
-            "name": "Animate",
-            "icon": "/images/Animate_logo.png",
-            "status": "poweringon",
-            "longitude": -122.4194,
-            "latitude": 37.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "aa",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Alpine 3.17",
-              "ip": "136.37.64.18",
-              "cores": "4",
-              "ram": "4GB",
-              "storage_total": "100GB",
-              "region": "North America",
-              "uptime": "99.99%"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Evensoft",
-            "icon": "/images/Evensoft_logo.png",
-            "status": "readyy",
-            "longitude": -111.4194,
-            "latitude": 29.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "Ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Ubuntu 22.04",
-              "ip": "192.168.0.12",
-              "cores": "8",
-              "ram": "16GB",
-              "storage_total": "200GB",
-              "region": "South America",
-              "uptime": "99.95%"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "category": "Amazon",
-        "items": [
-          {
-            "name": "Awsservices3",
-            "icon": "/images/AmazonS3_logo.png",
-            "status": "poweredoff",
-            "longitude": -144.4194,
-            "latitude": 47.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Amazon Linux 2",
-              "ip": "172.31.254.1",
-              "cores": "16",
-              "ram": "64GB",
-              "storage_total": "500GB",
-              "region": "North Pacific",
-              "uptime": "N/A"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
-        ]
-      }
+    "change": 688,
+    "assetImages":[
+      "app/images/satellite.png",
+      "app/images/cctv.png"
     ],
-    "On-Prem": [
-      {
-        "category": "Central",
-        "items": [
-          {
-            "name": "Cubic_Central_01",
-            "icon": "/images/CUBIC_LOGO_ICON.png",
-            "status": "error",
-            "longitude": -100.4194,
-            "latitude": 155.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Windows Server 2019",
-              "ip": "10.0.0.1",
-              "cores": "32",
-              "ram": "128GB",
-              "storage_total": "1TB",
-              "region": "Central America",
-              "uptime": "99.90%"
+    "asset": {
+        "In-Cloud": [
+            {
+                "category": "Frictionless",
+                "items": [
+                    {
+                        "name": "Animate",
+                        "icon": "/app/images/Animate_logo.png",
+                        "status": "ready",
+                        "longitude": -84.390252,
+                        "latitude": 33.7757338,
+                        "services": [
+                            {
+                                "name": "Mesh",
+                                "state": "ready",
+                                "url": "https://animate.eventsoft.link.to/mesh",
+                                "type": "web_service"
+                            },
+                            {
+                                "name": "Virtual Internet",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "web_service"
+                            },
+                            {
+                                "name": "Database",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "database"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Alpine 3.17",
+                            "ip": "136.37.64.18",
+                            "cores": "4",
+                            "ram": "4GB",
+                            "storage_total": "100GB",
+                            "region": "North America",
+                            "uptime": "99.99%"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "Mesh",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            },
+                            {
+                                "name": "Virtual Internet",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            },
+                            {
+                                "name": "Database",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
+            {
+                "category": "Amazon",
+                "items": [
+                    {
+                        "name": "Awsservices3",
+                        "icon": "/app/images/AmazonS3_logo.png",
+                        "status": "poweredoff",
+                        "longitude": -122.3393617,
+                        "latitude": 47.6223744,
+                        "services": [
+                            {
+                                "name": "bucket1",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "s3_bucket"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Amazon Linux 2",
+                            "ip": "172.31.254.1",
+                            "cores": "16",
+                            "ram": "64GB",
+                            "storage_total": "500GB",
+                            "region": "North Pacific",
+                            "uptime": "N/A"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "bucket1",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "On-Prem": [
+            {
+                "category": "East-Coast",
+                "items": [
+                    {
+                        "name": "Desktop 1",
+                        "icon": "/app/images/windows_pc.png",
+                        "status": "ready",
+                        "longitude": -77.3366139,
+                        "latitude": 38.5643647,
+                        "services": [
+                            {
+                                "name": "Desktop Environment",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "system"
+                            },
+                            {
+                                "name": "VPN client",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "service"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Windows 10",
+                            "ip": "192.168.0.12",
+                            "cores": "4",
+                            "ram": "6GB",
+                            "storage_total": "800GB",
+                            "region": "East Coast",
+                            "uptime": "99.95%"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "Desktop Environment",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            },
+                            {
+                                "name": "VPN client",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.18",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Network Analyst Desktop",
+                        "icon": "/app/images/wireshark_pc.png",
+                        "status": "ready",
+                        "longitude": -77.0634885,
+                        "latitude": 38.8199464,
+                        "services": [
+                            {
+                                "name": "Desktop Environment",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "system"
+                            },
+                            {
+                                "name": "VPN client",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "service"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Ubuntu 22.04",
+                            "ip": "192.168.0.12",
+                            "cores": "8",
+                            "ram": "16GB",
+                            "storage_total": "200GB",
+                            "region": "East Coast",
+                            "uptime": "99.95%"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "Desktop Environment",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.19",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            },
+                            {
+                                "name": "VPN client",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.20",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "West-Coast",
+                "items": [
+                    {
+                        "name": "Animate Cyber Range",
+                        "icon": "/app/images/Animate_logo.png",
+                        "status": "ready",
+                        "longitude": -119.34820395298249,
+                        "latitude": 46.29450263742953,
+                        "services": [
+                            {
+                                "name": "Desktop Environment",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "system"
+                            },
+                            {
+                                "name": "Desktop Share",
+                                "state": "ready",
+                                "url": "https://geocybermind.com/sharescreen/vnc.html?path=/sharescreen/websockify",
+                                "type": "service"
+                            },
+                            {
+                                "name": "VPN client",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "service"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Linux Mint 22.1",
+                            "region": "West Coast",
+                            "uptime": "99.95%"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "Desktop Environment",
+                                "properties": {
+                                    "environment": "MATE",
+                                    "ip": "136.37.64.41",
+                                    "cores": "4",
+                                    "threads": "4",
+                                    "ram": "32GB",
+                                    "storage_total": "2000GB"
+                                }
+                            },
+                            {
+                                "name": "VPN client",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.22",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Network Traffic",
+                        "icon": "/app/images/network_traffic_small.png",
+                        "status": "ready",
+                        "longitude": -121.8556644,
+                        "latitude": 37.3253945,
+                        "services": [
+                            {
+                                "name": "Desktop Environment",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "system"
+                            },
+                            {
+                                "name": "VPN client",
+                                "state": "ready",
+                                "url": "Internal",
+                                "type": "service"
+                            }
+                        ],
+                        "properties": {
+                            "os": "Ubuntu 22.04",
+                            "ip": "192.168.0.12",
+                            "cores": "8",
+                            "ram": "16GB",
+                            "storage_total": "200GB",
+                            "region": "West Coast",
+                            "uptime": "99.95%"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "Desktop Environment",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.21",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            },
+                            {
+                                "name": "VPN client",
+                                "properties": {
+                                    "os": "Alpine 3.17",
+                                    "ip": "136.37.64.22",
+                                    "cores": "4",
+                                    "ram": "4GB",
+                                    "storage_total": "100GB"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "category": "Philippine Ocean",
+                "items": [
+                    {
+                        "name": "Submarine-1",
+                        "icon": "/app/images/submarine.png",
+                        "status": "operational",
+                        "longitude": 128.35913711910231,
+                        "latitude": 19.31900304202708,
+                        "images": [
+                            "/app/images/notional_it_and_ot_networks.png",
+                            "/app/images/ics_and_plc_network.png"
+                        ],
+                        "services": [
+                            {
+                                "name": "Workstations",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            },
+                            {
+                                "name": "Printers",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            },
+                            {
+                                "name": "Applications Server",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            },
+                            {
+                                "name": "Valve PLC",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "plc"
+                            },
+                            {
+                                "name": "Motor PLC",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "plc"
+                            },
+                            {
+                                "name": "HMI",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "hmi"
+                            },
+                            {
+                                "name": "Control Server",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            },
+                            {
+                                "name": "Data Historian",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            },
+                            {
+                                "name": "Honeypot Network",
+                                "state": "operational",
+                                "url": "Internal",
+                                "type": "server"
+                            }
+                        ],
+                        "properties": {
+                            "os": "CentOS 8",
+                            "ip": "192.168.1.1",
+                            "cores": "24",
+                            "ram": "96GB",
+                            "storage_total": "2TB",
+                            "region": "West Coast",
+                            "uptime": "N/A"
+                        },
+                        "servicesInfo": [
+                            {
+                                "name": "ICS and PLC Network",
+                                "properties": {
+                                    "ip": "172.23.155.1/24",
+                                    "broadcast": "172.23.155.255",
+                                    "subnet": "255.255.255.0"
+                                }
+                            },
+                            {
+                                "name": "Notional IT and OT Networks",
+                                "properties": {
+                                    "ip": "10.8.0.1/24",
+                                    "broadcast": "10.8.0.255",
+                                    "subnet": "255.255.255.0"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "category": "East-Coast",
-        "items": [
-          {
-            "name": "Cubic_01",
-            "icon": "/images/CUBIC_LOGO_ICON.png",
-            "status": "unmanaged",
-            "longitude": -166.4194,
-            "latitude": 47.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Debian 12",
-              "ip": "172.16.1.1",
-              "cores": "8",
-              "ram": "32GB",
-              "storage_total": "250GB",
-              "region": "East Coast",
-              "uptime": "N/A"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          },
-          {
-            "name": "Cubic_East_01",
-            "icon": "/images/CUBIC_LOGO_ICON.png",
-            "status": "poweredoff",
-            "longitude": -106.4194,
-            "latitude": 17.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "Red Hat 9",
-              "ip": "10.1.0.10",
-              "cores": "12",
-              "ram": "48GB",
-              "storage_total": "1TB",
-              "region": "East Coast",
-              "uptime": "N/A"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "category": "West-Coast",
-        "items": [
-          {
-            "name": "Cubic_West_01",
-            "icon": "/images/CUBIC_LOGO_ICON.png",
-            "status": "poweredoff",
-            "longitude": -100.4194,
-            "latitude": 66.7749,
-            "images":[
-              "/images/facility-pic1.png",
-              "/images/facility-pic1.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "CentOS 8",
-              "ip": "192.168.1.1",
-              "cores": "24",
-              "ram": "96GB",
-              "storage_total": "2TB",
-              "region": "West Coast",
-              "uptime": "N/A"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "category": "Pacific-Ocean",
-        "items": [
-          {
-            "name": "Submarine-1",
-            "icon": "/images/submarine.png",
-            "status": "poweredoff",
-            "longitude": -110.4194,
-            "latitude": 76.7749,
-            "images":[
-              "/images/ics_and_plc_network.png",
-              "/images/notional_it_and_ot_networks.png"
-            ],
-            "services": [
-              {
-                "name": "Mesh",
-                "state": "ready",
-                "url": "https://animate.eventsoft.link.to/mesh",
-                "type": "web_service"
-              },
-              {
-                "name": "Virtual Internet",
-                "state": "ready",
-                "url": "Internal",
-                "type": "web_service"
-              },
-              {
-                "name": "Database",
-                "state": "ready",
-                "url": "Internal",
-                "type": "database"
-              },
-              {
-                "name": "Microhost-001",
-                "state": "ready",
-                "url": "NA",
-                "type": "microdesktop"
-              },
-              {
-                "name": "Minio",
-                "state": "ready",
-                "url": "https://eventsoft.link.to/minio",
-                "type": "web_service"
-              }
-            ],
-            "properties": {
-              "os": "CentOS 8",
-              "ip": "192.168.1.1",
-              "cores": "24",
-              "ram": "96GB",
-              "storage_total": "2TB",
-              "region": "West Coast",
-              "uptime": "N/A"
-            },
-            "servicesInfo": [
-              {
-                "name": "Mesh",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Virtual Internet",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Database",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              },
-              {
-                "name": "Mino ",
-                "properties": {
-                  "os": "Alpine 3.17",
-                  "ip": "136.37.64.18",
-                  "cores": "4",
-                  "ram": "4GB",
-                  "storage_total": "100GB"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+    }
 }

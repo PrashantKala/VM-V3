@@ -30,78 +30,30 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  // const handleSendMessage = async () => {
-
-  //   if (inputValue.trim()) {
-  //     const userMessage = { text: inputValue, sender: 'user' };
-  //     setMessages([...messages, userMessage]);
-  //     setInputValue('');
-  //     setIsLoading(true);
-
-  //     try {
-  //       const response = await axios.post(
-  //         'http://localhost:5000/api/chat', // Replace with your backend endpoint
-  //         { message: inputValue }
-  //       );
-
-  //       const botMessage = {
-  //         text: response.data.choices[0].message.content,
-  //         sender: 'bot',
-  //       };
-  //       setMessages((prevMessages) => [...prevMessages, botMessage]);
-  //     } catch (error) {
-  //       console.error('Error fetching bot response:', error);
-  //       setMessages((prevMessages) => [
-  //         ...prevMessages,
-  //         { text: 'Sorry, something went wrong. Please try again.', sender: 'bot' },
-  //       ]);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-  // };
-
-
   const handleSendMessage = async () => {
+
     if (inputValue.trim()) {
       const userMessage = { text: inputValue, sender: 'user' };
-      setMessages((prev) => [...prev, userMessage]);
+      setMessages([...messages, userMessage]);
       setInputValue('');
       setIsLoading(true);
-  
+
       try {
-        const response = await fetch('http://localhost:5000/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: inputValue }), // Updated key from "message" to "query" to match backend
-        });
-  
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let botText = '';
-        let done = false;
-  
-        // Add a placeholder for the streaming bot message
-        setMessages((prev) => [...prev, { text: '', sender: 'bot' }]);
-  
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-          const chunkValue = decoder.decode(value || new Uint8Array(), { stream: !done });
-  
-          botText += chunkValue;
-  
-          // Update the last bot message incrementally
-          setMessages((prevMessages) => {
-            const updatedMessages = [...prevMessages];
-            updatedMessages[updatedMessages.length - 1].text = botText;
-            return updatedMessages;
-          });
-        }
+        const response = await axios.post(
+          'http://localhost:5000/api/chat',
+          { message: inputValue }
+        );
+        console.log(response)
+
+        const botMessage = {
+          text: response.data.choices[0].message.content,
+          sender: 'bot',
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
       } catch (error) {
         console.error('Error fetching bot response:', error);
-        setMessages((prev) => [
-          ...prev,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           { text: 'Sorry, something went wrong. Please try again.', sender: 'bot' },
         ]);
       } finally {
@@ -109,6 +61,55 @@ const Chatbot = () => {
       }
     }
   };
+
+
+  // const handleSendMessage = async () => {
+  //   if (inputValue.trim()) {
+  //     const userMessage = { text: inputValue, sender: 'user' };
+  //     setMessages((prev) => [...prev, userMessage]);
+  //     setInputValue('');
+  //     setIsLoading(true);
+  
+  //     try {
+  //       const response = await fetch('http://localhost:5000/api/chat', {
+  //         method: 'POST',
+  //         headers: { 'Content-Type': 'application/json' },
+  //         body: JSON.stringify({ query: inputValue }), // Updated key from "message" to "query" to match backend
+  //       });
+  
+  //       const reader = response.body.getReader();
+  //       const decoder = new TextDecoder();
+  //       let botText = '';
+  //       let done = false;
+  
+  //       // Add a placeholder for the streaming bot message
+  //       setMessages((prev) => [...prev, { text: '', sender: 'bot' }]);
+  
+  //       while (!done) {
+  //         const { value, done: doneReading } = await reader.read();
+  //         done = doneReading;
+  //         const chunkValue = decoder.decode(value || new Uint8Array(), { stream: !done });
+  
+  //         botText += chunkValue;
+  
+  //         // Update the last bot message incrementally
+  //         setMessages((prevMessages) => {
+  //           const updatedMessages = [...prevMessages];
+  //           updatedMessages[updatedMessages.length - 1].text = botText;
+  //           return updatedMessages;
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching bot response:', error);
+  //       setMessages((prev) => [
+  //         ...prev,
+  //         { text: 'Sorry, something went wrong. Please try again.', sender: 'bot' },
+  //       ]);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  // };
   return (
     <div className="chatbot-container">
       <button className={`chatbot-toggle ${isOpen ? 'hidden' : 'bounce'}`} onClick={toggleChatbot}>
