@@ -29,7 +29,8 @@ class LLMChains:
             #         yield token
             # else:
             result = LLMChains.CHAIN.invoke(inputs)
-            return result.split("</think>")[-1].strip()
+            markdown_response = result.split("</think>")[-1].strip()
+            return markdown_response
 
         except Exception as e:
             print("Error in LLMChains.get_ai_output", traceback.format_exc())
