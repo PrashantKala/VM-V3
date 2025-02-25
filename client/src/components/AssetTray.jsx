@@ -40,7 +40,7 @@ const Navbar = ({setDrawer2,drawer2, setDrawer1,tabImages, openLeftDrawer, setWh
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        Layer {hovered ? "▲" : "▼"}
+        Layers {hovered ? "▲" : "▼"}
       </div>
 
       <div

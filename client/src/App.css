@@ -1389,6 +1389,19 @@ table td a:hover {
   border-radius: 50%;
 }
 
+
+.unread-count {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .chatbot-window {
