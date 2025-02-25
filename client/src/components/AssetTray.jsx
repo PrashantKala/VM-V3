@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "/app/images/logo.png";
 import mobile_logo from "/app/images/480_logo.png";
 
-const Navbar = ({setDrawer2,drawer2, setDrawer1,tabImages, openLeftDrawer, setWhoIsActive, selectedTabs, toggleTabSelection, tabs, setinfoSelectedAsset, onSelectAsset, openDrawer, closeDrawer }) => {
+const Navbar = ({setDrawer2,drawer2, setDrawer1,tabImages, toggleTab, setWhoIsActive, selectedTabs, toggleTabSelection, tabs, setinfoSelectedAsset, onSelectAsset, openDrawer, closeDrawer }) => {
   const [hovered, setHovered] = useState(false);
 
   const handleLogout = () => {
@@ -54,6 +54,7 @@ const Navbar = ({setDrawer2,drawer2, setDrawer1,tabImages, openLeftDrawer, setWh
               key={index}
               className={`tab ${selectedTabs.includes(tab) ? "active" : ""}`}
               onClick={() => {
+                toggleTab(tab)
                 toggleTabSelection(tab);
                 setWhoIsActive(selectedTabs.includes(tab) ? null : tab);
                 if(drawer2) {

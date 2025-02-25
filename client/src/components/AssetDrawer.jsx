@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AssetDrawer = ({ closeLeftDrawer, onSelectAsset, selectedTabs, assets }) => {
+const AssetDrawer = ({ toggleTab, onSelectAsset, selectedTabs, assets, expandedTabs }) => {
   const statusColors = {
     poweringon: "black",
     poweredoff: "grey",
@@ -10,15 +10,10 @@ const AssetDrawer = ({ closeLeftDrawer, onSelectAsset, selectedTabs, assets }) =
   };
 
   // State to track which tabs are expanded
-  const [expandedTabs, setExpandedTabs] = useState({});
+
 
   // Toggle the expanded state of a tab
-  const toggleTab = (tab) => {
-    setExpandedTabs((prev) => ({
-      ...prev,
-      [tab]: !prev[tab], // Toggle the expanded state
-    }));
-  };
+
 
   const selectAsset = (asset) => {
     onSelectAsset(asset);

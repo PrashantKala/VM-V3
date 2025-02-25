@@ -128,6 +128,13 @@ const Homepage = () => {
     setDrawer1((prev) => !prev);
     setDrawer2(false);
   };
+  const [expandedTabs, setExpandedTabs] = useState({});
+  const toggleTab = (tab) => {
+    setExpandedTabs((prev) => ({
+      ...prev,
+      [tab]: !prev[tab], // Toggle the expanded state
+    }));
+  };
 
 
   return (
@@ -151,6 +158,7 @@ const Homepage = () => {
         closeDrawer={closeDrawer} 
         openLeftDrawer={openLeftDrawer} 
         tabImages={tabImages}
+        toggleTab={toggleTab}
       />
       <MapBox 
         assets={assets} 
@@ -197,6 +205,8 @@ const Homepage = () => {
         toggleDisplay={toggleDisplay} 
         closeDrawer={closeDrawer} 
         selectedServiceInfo={selectedServiceInfo} 
+        toggleTab={toggleTab}
+        expandedTabs={expandedTabs}
       />
       <Chatbot />
     </>

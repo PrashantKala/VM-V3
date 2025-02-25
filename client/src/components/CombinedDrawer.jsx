@@ -11,10 +11,10 @@ const CombinedDrawer = ({
   drawer1,
   drawer2,
   seed,
-  isDrawerOpen,
+  toggleTab,
   selectedAsset,
   isVisible,
-  openDrawer,
+  expandedTabs,
   isLeftDrawerOpen,
   openLeftDrawer,
   setSelectedAsset,
@@ -60,10 +60,12 @@ const CombinedDrawer = ({
     if (drawer1) {
       return selectedTabs.length > 0 ? (
         <AssetDrawer
+        toggleTab={toggleTab}
           onSelectAsset={setSelectedAsset}
           closeLeftDrawer={closeLeftDrawer}
           selectedTabs={selectedTabs} // Pass selectedTabs
           assets={assets} // Pass assets
+          expandedTabs={expandedTabs}
         />
       ) : (
         <h2 style={{margin:"auto"}} >Please select a tab</h2>
