@@ -25,7 +25,7 @@ const ImageModal = ({ images, onClose }) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 10000,
+      zIndex: 100000,
     }}>
       <div style={{
         backgroundColor: '#fff',
@@ -41,7 +41,7 @@ const ImageModal = ({ images, onClose }) => {
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
           <div>
-            {images.map((_, index) => (
+            {images.map((image, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
@@ -55,7 +55,9 @@ const ImageModal = ({ images, onClose }) => {
                   cursor: 'pointer',
                 }}
               >
-                Image {index + 1}
+                {image.imgName}
+                
+                
               </button>
             ))}
           </div>
@@ -70,15 +72,16 @@ const ImageModal = ({ images, onClose }) => {
           <Zoom>
             <img
               ref={imageRef}
-              src={images[activeIndex]}
+              src={images[activeIndex].imgPath}
               alt={`Image ${activeIndex + 1}`}
               style={{
-                maxWidth: '100%',
+                maxWidth: '70%',
                 borderRadius: '4px',
                 transform: `scale(${scale})`, // Apply zoom scale
                 transition: 'transform 0.1s ease', // Smooth zoom transition
               }}
             />
+            {/* {console.log(images[activeIndex].imgPath)} */}
           </Zoom>
         </div>
       </div>

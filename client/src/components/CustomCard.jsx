@@ -31,7 +31,7 @@ const CustomCard = ({ toggleDrawer2,setIsImageModalOpen, isDrawerOpen, setIsDraw
           <div></div>
           <h2 style={{ cursor: "pointer" }} onClick={() => { setSelectedRow(null); setSelectedServiceInfo(null) }}>{name}</h2>
           <div className='moreDetailsBtns' style={{ display: "flex", flexDirection: "column" }}>
-            <button style={!name.startsWith('Submarine')?{display:"none"}:{}} onClick={() => setIsImageModalOpen(true)}>Show Images</button>
+            <button style={!name.startsWith('Submarine')?{display:"none"}:{}} onClick={() => setIsImageModalOpen(true)}>Show Diagrams</button>
             <button onClick={toggleDrawer2}>More Details</button>
           </div>
         </div>

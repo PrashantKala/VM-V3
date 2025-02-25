@@ -357,7 +357,10 @@ table td a:hover {
 
 .left-drawer-content {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
+  gap: 1rem;
   /* width: 500px; */
 }
 
@@ -397,6 +400,9 @@ table td a:hover {
   margin: 0 0 10px 10px;
   font-size: 18px;
   font-weight: bold;
+  background-color: #f2efef;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 /* Asset Items */
@@ -405,9 +411,10 @@ table td a:hover {
   /* flex-wrap: wrap; */
   /* justify-content: center; */
   /* align-items: center; */
-  gap: 5rem;
+  gap: 1rem;
   /* border: 2px solid yellow; */
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  flex-direction: column;
 }
 
 
@@ -889,7 +896,7 @@ table td a:hover {
   flex-direction: column;
   padding: 0px 20px 0px 20px;
   /* overflow-y: auto; */
-  z-index: 10000;
+  z-index: 1000;
   /* overflow: visible; */
 }
 
@@ -927,11 +934,11 @@ table td a:hover {
 .drawer-close, .asset-drawer-close {
   border: none;
   /* border: 2px solid black; */
-  background: #727070;
+  background: #ede9e9;
   color: white;
-  z-index: 100000;
+  z-index: 10000;
   width: 30px;
-  border-radius: 0% 50% 50% 0%;
+  border-radius: 0% 30% 30% 0%;
   font-size: 30px;
   cursor: pointer;
   position: absolute;
@@ -1231,8 +1238,8 @@ table td a:hover {
 
 /* Chatbot Window */
 .chatbot-window {
-  width: 350px;
-  height: 500px;
+  width: 400px;
+  height: 75vh;
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -1306,13 +1313,14 @@ table td a:hover {
   background-color: #16489b;
   color: white;
   border-radius: 10px 10px 0 10px;
+  text-align: left;
 }
 
 .message.bot .message-content {
   /* background-color: #e1e1e1; */
   color: black;
-  border-radius: 10px 10px 10px 0;
   text-align: left;
+  border-radius: 10px 10px 10px 0;
 }
 
 /* Typing Indicator */

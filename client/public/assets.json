@@ -353,8 +353,14 @@
                         "longitude": 128.35913711910231,
                         "latitude": 19.31900304202708,
                         "images": [
-                            "/app/images/notional_it_and_ot_networks.png",
-                            "/app/images/ics_and_plc_network.png"
+                            {
+                                "imgName":"Notional IT & OT Networks",
+                                "imgPath":"/app/images/notional_it_and_ot_networks.png"
+                            },
+                            {
+                                "imgName":"ICS & PLC Network",
+                                "imgPath":"/app/images/ics_and_plc_network.png"
+                            }
                         ],
                         "services": [
                             {

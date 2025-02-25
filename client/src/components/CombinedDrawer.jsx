@@ -66,7 +66,7 @@ const CombinedDrawer = ({
           assets={assets} // Pass assets
         />
       ) : (
-        <h2>Please select a tab</h2>
+        <h2 style={{margin:"auto"}} >Please select a tab</h2>
       );
     }
     if (drawer2) {
@@ -77,7 +77,7 @@ const CombinedDrawer = ({
           selectedAsset={selectedAsset}
         />
       ) : (
-        <h2>Please select an asset</h2>
+        <h2 style={{margin:"auto"}} >Please select an asset</h2>
       );
     }
     return null;
