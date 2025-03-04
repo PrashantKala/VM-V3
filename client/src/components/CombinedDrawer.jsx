@@ -16,7 +16,7 @@ const CombinedDrawer = ({
   isVisible,
   expandedTabs,
   isLeftDrawerOpen,
-  openLeftDrawer,
+  setIsVisible,
   setSelectedAsset,
   closeLeftDrawer,
   selectedTabs, // Use selectedTabs instead of activeTab
@@ -37,6 +37,7 @@ const CombinedDrawer = ({
   useEffect(() => {
     if (isLeftDrawerOpen) {
       setDrawer1(true);
+      setIsVisible(true); // Ensure visibility in mobile view
     } else {
       setDrawer1(false);
     }
@@ -45,14 +46,14 @@ const CombinedDrawer = ({
   const DrawerToggleButton = ({ isOpen, toggle }) => (
     <button className={isOpen ? "drawer-close" : "drawer-open"} onClick={toggle}>
       {/* {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"} */}
-      <img src={asset_icon} style={{width:"20px"}} />
+      <img src={asset_icon} style={{ width: "20px" }} />
     </button>
   );
 
   const LeftDrawerToggleButton = ({ isOpen, toggle }) => (
     <button className={isOpen ? "asset-drawer-close" : "asset-drawer-open"} onClick={toggle}>
       {/* {isDesktop ? (isOpen ? "<" : ">") : isOpen ? "v" : "^"} */}
-      <img src={properties_icon} style={{width:"20px"}} />
+      <img src={properties_icon} style={{ width: "20px" }} />
     </button>
   );
 
@@ -60,7 +61,7 @@ const CombinedDrawer = ({
     if (drawer1) {
       return selectedTabs.length > 0 ? (
         <AssetDrawer
-        toggleTab={toggleTab}
+          toggleTab={toggleTab}
           onSelectAsset={setSelectedAsset}
           closeLeftDrawer={closeLeftDrawer}
           selectedTabs={selectedTabs} // Pass selectedTabs
@@ -68,7 +69,7 @@ const CombinedDrawer = ({
           expandedTabs={expandedTabs}
         />
       ) : (
-        <h2 style={{margin:"auto"}} >Please select a tab</h2>
+        <h2 style={{ margin: "auto" }} >Please select a tab</h2>
       );
     }
     if (drawer2) {
@@ -79,7 +80,7 @@ const CombinedDrawer = ({
           selectedAsset={selectedAsset}
         />
       ) : (
-        <h2 style={{margin:"auto"}} >Please select an asset</h2>
+        <h2 style={{ margin: "auto" }} >Please select an asset</h2>
       );
     }
     return null;
@@ -100,11 +101,12 @@ const CombinedDrawer = ({
           toggle={() => {
             toggleDrawer1();
             setIsDrawerOpen((prev) => !prev);
+            setIsVisible(true);
           }}
         />
       </div>
 
-      {isDesktop || (!isDesktop && selectedAsset != null) ? (
+      {isDesktop || !isDesktop ? (
         <div
           style={!isDesktop ? { display: isVisible ? "flex" : "none" } : {}}
           className={`drawer ${drawer1 || drawer2 ? "open" : ""}`}

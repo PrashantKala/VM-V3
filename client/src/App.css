@@ -279,6 +279,7 @@ table td a:hover {
 /* Tabs */
 .tabs {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
@@ -291,7 +292,7 @@ table td a:hover {
   /* width: 120px; */
   /* height: 160px; */
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,9 +312,9 @@ table td a:hover {
 }
 
 .tab-image {
-  width: 80%;
-  height: 80px;
-  object-fit: contain;
+  width: 4rem;
+  /* height: 80px; */
+  /* object-fit: contain; */
 }
 
 .tab-name {
@@ -348,11 +349,7 @@ table td a:hover {
   left: 0; /* Slide in when open */
 }
 
-.asset-dropdown{
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  padding: 10px;
-}
+
 
 
 .left-drawer-content {
@@ -367,6 +364,16 @@ table td a:hover {
 
 /* Asset Dropdown */
 
+
+.asset-dropdown{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px;
+}
+.asset-dropdown h2{
+  font-size: 16px;
+}
+
 .category-container {
   margin-top: 2rem;
   display: flex;
@@ -376,6 +383,10 @@ table td a:hover {
   width:100%;
   gap: 2rem;
   /* border: 2px solid yellow; */
+}
+
+.category-container h3{
+  font-size: 14px;
 }
 
 
@@ -397,7 +408,7 @@ table td a:hover {
 
 /* Asset Categories */
 .category-title {
-  margin: 0 0 10px 10px;
+  margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
   background-color: #f2efef;
@@ -420,7 +431,7 @@ table td a:hover {
 
 .asset-items-holder{
   flex-shrink: 0; 
-  margin: auto;
+  /* margin: auto; */
   /* flex-direction: column; */
   /* display: flex; */
   /* align-items: center; */
@@ -450,7 +461,7 @@ table td a:hover {
   cursor: pointer;
   display: flex;
   width: 100%;
-  height: 60px;
+  height: 40px;
   object-fit: contain;
   border-radius: 5px;
 }
@@ -460,7 +471,7 @@ table td a:hover {
 .asset-name {
   /* margin-top: 15px; */
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -511,80 +522,20 @@ table td a:hover {
 /* Existing CSS remains the same until the media queries */
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .asset-container {
-    width: 85vw;
-    /* Adjust width for smaller screens */
-    left: -5%;
-    transform: none;
-    /* Remove transform */
-    top: 60px;
-    /* Adjust top position */
-    gap: 1rem;
-    /* Reduce gap between categories */
-    /* padding: 10px; */
-    /* Add padding for better spacing */
-    overflow-x: auto;
-    /* Enable horizontal scrolling */
-    white-space: nowrap;
-    /* Prevent wrapping of child elements */
-  }
 
-
-
-
-  .asset-category {
-    left: 0px;
-    position: relative;
-    display: inline-block;
-    /* Display categories inline */
-    width: auto;
-    /* Allow categories to take up as much space as needed */
-    /* flex: none; Disable flex growth */
-    /* margin-right: 1rem; */
-    /* Add margin between categories */
-
-  }
-
-  .asset-items {
-    display: inline-flex;
-    /* Display items inline */
-    gap: 1rem;
-    /* Reduce gap between items */
-  }
-  
-  .asset-card {
-    width: 120px;
-    /* Fixed width for cards */
-  }
-
-  .asset-name {
-    font-size: 10px;
-    /* Reduce font size for asset names */
-  }
-
-  .category-title {
-    font-size: 13px;
-    /* Reduce font size for category titles */
-  }
-
-  .close-button {
-    top: 10px;
-    /* Adjust close button position */
-    right: 10px;
-  }
-
-  .left-drawer {
-    width: 80%; /* Cover 80% of the screen on smaller devices */
-    left: -80%; /* Initially hidden */
-  }
-
-  .left-drawer.open {
-    left: 0; /* Slide in when open */
-  }
-}
 
 @media (max-width: 480px) {
+
+  .asset-dropdown{
+    width: 80%;
+    margin: auto;
+    margin: 2px;
+    margin-top: 15px;
+    
+  }
+  .asset-dropdown h2{
+    font-size: 14px;
+  }
   .asset-container {
     width: 85vw;
     /* Full width for very small screens */
@@ -593,7 +544,7 @@ table td a:hover {
     /* top: px; */
     /* Adjust top position */
     /* padding: 5px; */
-    padding-top: 10px;
+    /* padding-top: 10px; */
     /* Reduce padding */
   }
 
@@ -603,7 +554,7 @@ table td a:hover {
   }
   
   .asset-card {
-
+    margin: 0px;
     width: 30px;
     height: 30px;
     /* Further reduce card width */
@@ -615,27 +566,39 @@ table td a:hover {
     height: 10px;
   }
 
+
   
   .asset-items {
     /* justify-content: center; */
     gap: 2rem;
+    /* width: 20px; */
     /* Further reduce gap between items */
   }
   .asset-icon{
-    width: 20px;
-    height: 20px;
+    width: 5px;
+    height: 5px;
   }
 
   .asset-name {
     font-size: 9px;
     /* Further reduce font size for asset names */
   }
+  .category-container{
+    padding: 0px;
+    gap: 1rem;
+    margin-top: .5rem;
+  }
 
-  .category-title {
-    font-size: 12px;
+  .category-container h3 {
+    padding: 0px;
+    font-size: 10px;
     /* Further reduce font size for category titles */
   }
 
+  .left-drawer-content{
+    padding: 0px;
+    /* width: 100%; */
+  }
 
 
   .close-button {
@@ -649,6 +612,14 @@ table td a:hover {
   .tabs {
     gap: 0.5rem;
     /* Reduce gap between tabs */
+    
+  }
+  .asset-tray{
+    /* border: 2px solid black; */
+    padding: 5px;
+    top: 3rem;
+    /* left:15% ; */
+
   }
 
   .tab {
@@ -656,6 +627,13 @@ table td a:hover {
     /* Adjust tab padding */
     font-size: 12px;
     /* Reduce tab font size */
+  }
+
+  .tab-image{
+    width: 1.5rem;
+  }
+  .tab-name{
+    font-size: 8px;
   }
 }
 
@@ -790,8 +768,8 @@ table td a:hover {
 
 @media (max-width: 480px) {
   .app-container {
-    margin-top: 2rem;
-    height: 60vh;
+    /* margin-top: 2rem; */
+    height: 75vh;
     /* Further reduce height for very small screens */
     /* margin: 4px; */
   }
@@ -963,7 +941,7 @@ table td a:hover {
 .drawer-content h2 {
   margin: 0px;
   padding: 5px;
-  font-size: larger;
+  font-size: large;
 }
 
 .drawer-asset-icon {
@@ -1002,19 +980,19 @@ table td a:hover {
 
 
 @media (max-width: 768px) {
-  .drawer {
-    position: relative;
-    width: 80vw;
-    top: auto;
-    bottom: 0;
-    left: 0%;
+  /* .drawer { */
+    /* position: relative; */
+    /* width: 80vw; */
+    /* top: auto; */
+    /* bottom: 0; */
+    /* left: 0%; */
     /* transform: translate(-50%, 100%); */
     /* border: none; */
 
-  }
-  .drawer.open {
-    top: 0;
-  }
+  /* } */
+  /* .drawer.open { */
+    /* top: 0; */
+  /* } */
 
 
 
@@ -1022,66 +1000,83 @@ table td a:hover {
 
 @media (max-width: 480px) {
   .drawer {
-    margin: auto;
-    position: relative;
-    width: 80vw;
-    /* height: 40%; */
+    /* margin: 0px; */
+    /* position: relative; */
+    padding: 5px;
+    width: 35vw;
+    height: 85%;
     /* top: auto; */
-    bottom: 0px;
+    /* bottom: 0px; */
     /* transition: top 0.3s ease-in-out; */
     /* overflow-x: auto; */
   }
-  .drawer.open {
-    top: 0;
-  }
-  .drawer-open {
-    /* border: 2px solid black; */
-    height: 30px;
-    width: 40px;
-    border-radius: 50% 50% 0% 0%;
-    /* font-size: 20px; */
-    top: -30px;
-    left: 20%;
 
-    /* bottom: -100px; */
-    /* left: -30px; */
+
+  .asset-card img.asset-icon {
+    width: 15px;
+  }
+  .status-dot{
+    width: 10px;
+    height: 10px;
   }
   .drawer-close{
-    top: 0px;
-    left: 20%;
-    height: 30px;
-    width: 40px;
-    border-radius: 0% 0% 50% 50%;
-    font-size: 20px;
+    /* top: 0px; */
+    /* left: 20%; */
+    /* height: 30px; */
+    /* width: 40px; */
+    /* border-radius: 0% 0% 50% 50%; */
+    /* font-size: 20px; */
   }
-  .drawer-content h2{
-    font-size: 1rem;
+  .drawer h2{
+    font-size: 12px;
   }
   .drawer-content img{
-    width: 30px;
-    height: 30px;
+    /* width: 30px; */
+    /* height: 30px; */
   }
   
   .drawer-content tbody{
     /* display: flex; */
-    padding: 0px;
-    margin: 0px;
+    /* padding: 0px; */
+    /* margin: 0px; */
   }
   .drawer-content tr{
-    font-size: .5rem;
+    /* font-size: .5rem; */
     /* display: flex; */
     /* flex-direction:column; */
     /* border: 1px solid black; */
   }
 
   .drawer-content-services-info th, .drawer-content-services-info td{
-    font-size: .5rem;
+    /* font-size: .5rem; */
 
   }
   .drawer-content-services-info h2{
-    font-size: 1rem;
+    /* font-size: 1rem; */
   }
   
+  .drawer-close {
+    border-radius: 0%;
+    top: 10vh;
+    left: 30px;
+  }
+  .asset-drawer-close {
+    border-radius: 0%;
+    top: 10vh;
+    left: 0px;
+  }
+  .drawer-open {
+    
+    border-radius: 0%;
+    top: 10vh;
+    left: 30px;
+  }
+  .asset-drawer-open {
+    border-radius: 0%;
+    top: 10vh;
+    left: 0px;
+  }
+
 }
 
 
@@ -1429,6 +1424,27 @@ table td a:hover {
     height: 25px;
   }
 }
+@media (max-width: 480px) {
+  .chatbot-window {
+    width: 80%;
+    height: 60vh;
+    bottom: 70px;
+    left: 5%;
+  }
+
+  .chatbot-toggle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .bot-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+
 
 
 

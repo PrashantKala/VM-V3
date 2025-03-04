@@ -9,10 +9,6 @@ const AssetDrawer = ({ toggleTab, onSelectAsset, selectedTabs, assets, expandedT
     error: "red",
   };
 
-  // State to track which tabs are expanded
-
-
-  // Toggle the expanded state of a tab
 
 
   const selectAsset = (asset) => {
@@ -24,9 +20,9 @@ const AssetDrawer = ({ toggleTab, onSelectAsset, selectedTabs, assets, expandedT
       {selectedTabs.map((tab) => (
         <div className="asset-dropdown" key={tab}>
           {/* Tab header with click handler to toggle dropdown */}
-          <h3 onClick={() => toggleTab(tab)} style={{ cursor: "pointer" }}>
+          <h2 onClick={() => toggleTab(tab)} style={{ cursor: "pointer" }}>
             {tab} {expandedTabs[tab] ? "▲" : "▼"}
-          </h3>
+          </h2>
           {/* Dropdown content */}
           {expandedTabs[tab] && (
             <div className="category-container">

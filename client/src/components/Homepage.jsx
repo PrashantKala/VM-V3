@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import Chatbot from './Chatbot';
 import AssetDrawer from './AssetDrawer';
 import CombinedDrawer from './CombinedDrawer';
+import { io } from "socket.io-client";
 
 const checkAndClearExpiredData = () => {
   const storedUser = localStorage.getItem('user');
@@ -46,35 +47,41 @@ const Homepage = () => {
   const count = useRef(0);
   const [tabImages,setTabImages]=useState([])
 
-  const fetchData = () => {
-    axios.get("../assets.json")
-    .then(response => {
-        const newChange = response.data.change;
-        if (newChange !== isAssetChanged) {
-          setAssets(response.data.asset);
-          setTabImages(response.data.assetImages)
-          setAssetChange(newChange);
-          if (count.current === 0) {
-            count.current = 1;
-          } else {
-            reset(1);
-          }
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching assets data:', error);
-      });
-    };
-    
-    useEffect(() => {
-      fetchData();
-      setTabs(()=>{
-        return Object.keys(assets)
-      })
-    const intervalId = setInterval(fetchData, 500);
-    return () => clearInterval(intervalId);
+  const socket = io('https://geocybermind.com', {path: '/bot/socket.io/',transports: ['websocket', 'polling']});
 
-  }, [isAssetChanged]);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/assets.json");
+      setAssets(response.data.asset);
+      setTabImages(response.data.assetImages);
+      setAssetChange(response.data.change);
+      setTabs(Object.keys(response.data.asset));
+    } catch (error) {
+      console.error("Error fetching assets data:", error);
+    }
+  };
+    
+  useEffect(() => {
+    fetchData(); // Initial fetch
+
+    // Listen for asset updates from backend via Socket.IO
+    socket.on("asset_update", (data) => {
+      console.log("Received asset update:", data);
+      setAssets(data.asset);
+      setTabImages(data.assetImages);
+      setAssetChange(data.change);
+      setTabs(Object.keys(data.asset));
+      if (count.current === 0) {
+        count.current = 1;
+      } else {
+        reset(1);
+      }
+    });
+
+    return () => {
+      socket.off("asset_update"); // Cleanup on unmount
+    };
+  }, []);
 
   const toggleTabSelection = (tab) => {
     setSelectedTabs(prev => 
@@ -121,10 +128,12 @@ const Homepage = () => {
   };
 
   const toggleDrawer2 = () => {
+    // setIsVisible((prev)=>!prev)
     setDrawer2((prev) => !prev);
     setDrawer1(false);
   };
   const toggleDrawer1 = () => {
+    // setIsVisible((prev)=>!prev)
     setDrawer1((prev) => !prev);
     setDrawer2(false);
   };
@@ -185,6 +194,7 @@ const Homepage = () => {
         toggleDrawer2={toggleDrawer2} 
       />
       <CombinedDrawer 
+      setIsVisible={setIsVisible}
         setDrawer1={setDrawer1} 
         drawer1={drawer1} 
         drawer2={drawer2} 
@@ -208,7 +218,7 @@ const Homepage = () => {
         toggleTab={toggleTab}
         expandedTabs={expandedTabs}
       />
-      <Chatbot />
+      <Chatbot assets={assets} />
     </>
   );
 };

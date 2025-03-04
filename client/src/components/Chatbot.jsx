@@ -1,135 +1,150 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-import ReactMarkdown from 'react-markdown'; // For rendering markdown messages
-import botIcon from '../images/chatBotIcon.png'; // Bot icon
-import newChatIcon from '../images/newChat.jpg'; // New chat icon
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import botIcon from '../images/chatBotIcon.png';
+import newChatIcon from '../images/newChat.jpg';
 
-// Connect to the Flask backend using Socket.IO
-const socket = io('http://localhost:5000');
+// Chatbot Component
+const Chatbot = ({ assets }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const messagesEndRef = useRef(null);
+  const [socket, setSocket] = useState(null);
 
-const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false); // Chatbot window visibility
-  const [messages, setMessages] = useState([]); // Chat messages
-  const [inputValue, setInputValue] = useState(''); // Input field value
-  const [isLoading, setIsLoading] = useState(false); // Loading state for bot response
-  const [unreadCount, setUnreadCount] = useState(0); // Unread messages count
-  const messagesEndRef = useRef(null); // Reference to scroll to the bottom of messages
+  // Function to check asset status and add messages if status is not "ready"
+  const checkAssetStatus = (assets) => {
+    const initialMessages = [{ text: "Hi! I'm GeoCybermind. How can I assist you today?", sender: 'bot' }];
+    Object.keys(assets).forEach((asset) => {
+      console.log("asset",asset)
+      assets[asset].forEach((category) => {
+        category.items.forEach((item)=>{
 
-  // Toggle chatbot window visibility
-  const toggleChatbot = () => {
-    setIsOpen(!isOpen);
-    if (!isOpen && messages.length === 0) {
-      // Add initial welcome message when opening the chatbot
-      setMessages([{ text: "Hi! I'm GeoCybermind. How can I assist you today?", sender: 'bot' }]);
-    }
-    // Reset unread count when opening the chat
-    if (!isOpen) {
-      setUnreadCount(0);
-    }
+          console.log("item",item)
+          if (item.status !== 'ready') {
+            initialMessages.push({ text: `${item.name}: ${item.status}`, sender: 'bot' });
+          }
+        })
+      });
+    });
+    return initialMessages;
   };
 
-  // Start a new chat
-  const startNewChat = () => {
-    setMessages([{ text: "Hi! I'm GeoCybermind. How can I assist you today?", sender: 'bot' }]);
-  };
-
-  // Scroll to the bottom of the messages container
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Scroll to bottom whenever messages change
+  // Set initial messages when component mounts
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  // Handle sending a message
-  const handleSendMessage = () => {
-    if (inputValue.trim()) {
-      const userMessage = { text: inputValue, sender: 'user' };
-      setMessages((prevMessages) => [...prevMessages, userMessage]);
-      setInputValue('');
-      setIsLoading(true);
-
-      // Send the message to the server via Socket.IO
-      socket.emit('send_message', { message: inputValue });
+    if (assets) {
+      const initialMessages = checkAssetStatus(assets);
+      setMessages(initialMessages);
     }
-  };
+  }, [assets]);
 
-  // Listen for incoming messages from the server
+  // Establish socket connection
   useEffect(() => {
-    socket.on('receive_message', (data) => {
+    const newSocket = io('https://geocybermind.com', { path: '/bot/socket.io/', transports: ['websocket', 'polling'] });
+    setSocket(newSocket);
+
+    // Listen for bot messages
+    newSocket.on('chat_message', (data) => {
       const botMessage = data.choices[0].message.content;
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: botMessage, sender: 'bot' },
-      ]);
+      setMessages((prevMessages) => [...prevMessages, { text: botMessage, sender: 'bot' }]);
       setIsLoading(false);
 
-      // Increment unread count if the chat window is closed
       if (!isOpen) {
         setUnreadCount((prevCount) => prevCount + 1);
       }
     });
 
-    // Cleanup on component unmount
+    // Listen for alert messages
+    const handleAlert = (data) => {
+      console.log("Alert received:", data.message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: `${data.message}`, sender: 'bot' }
+      ]);
+
+      if (!isOpen) {
+        setUnreadCount((prevCount) => prevCount + 1);
+      }
+    };
+
+    newSocket.on('alert_message', handleAlert);
+
     return () => {
-      socket.off('receive_message');
+      newSocket.off('chat_message');
+      newSocket.off('alert_message', handleAlert);
+      newSocket.disconnect();
     };
   }, [isOpen]);
 
+  // Scroll to bottom when messages update
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Toggle chatbot window
+  const toggleChatbot = () => {
+    setIsOpen((prevIsOpen) => {
+      if (!prevIsOpen) {
+        setUnreadCount(0); // Reset unread count only when opening
+      }
+      return !prevIsOpen;
+    });
+  };
+
+  // Handle sending a message
+  const handleSendMessage = () => {
+    if (inputValue.trim() && socket) {
+      const userMessage = { text: inputValue, sender: 'user' };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
+      setInputValue('');
+      setIsLoading(true);
+      socket.emit('send_message', { message: inputValue });
+    }
+  };
+
   return (
     <div className="chatbot-container">
-      {/* Toggle button to open/close the chatbot */}
       <button className={`chatbot-toggle ${isOpen ? 'hidden' : 'bounce'}`} onClick={toggleChatbot}>
         <img src={botIcon} alt="Chatbot" className="bot-icon" />
-        {/* Show unread count badge if there are unread messages */}
         {unreadCount > 0 && <span className="unread-count">{unreadCount}</span>}
       </button>
 
-      {/* Chatbot window */}
       <div className={`chatbot-window ${isOpen ? 'open' : ''}`}>
-        {/* Chatbot header */}
         <div className="chatbot-header">
           <div>
             <h3>GeoCybermind</h3>
-            <button className="new-chat-button" onClick={startNewChat}>
+            <button className="new-chat-button" onClick={() => setMessages(checkAssetStatus(assets))}>
               <img src={newChatIcon} alt="New Chat" />
             </button>
           </div>
-          <button className="chatbot-close" onClick={toggleChatbot}>
-            ×
-          </button>
+          <button className="chatbot-close" onClick={toggleChatbot}>×</button>
         </div>
 
-        {/* Chat messages */}
         <div className="chatbot-messages">
           {messages.map((message, index) => (
             <div key={index} className={`message ${message.sender}`}>
               {message.sender === 'bot' ? (
                 <div className="message-content">
-                  <ReactMarkdown>{message.text}</ReactMarkdown>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{message.text}</ReactMarkdown>
                 </div>
               ) : (
                 <div className="message-content">{message.text}</div>
               )}
             </div>
           ))}
-          {/* Loading indicator */}
           {isLoading && (
             <div className="message bot">
               <div className="message-content typing-indicator">
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
+                <span>.</span><span>.</span><span>.</span>
               </div>
             </div>
           )}
-          {/* Empty div to scroll into view */}
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Chat input area */}
         <div className="chatbot-input">
           <input
             type="text"
