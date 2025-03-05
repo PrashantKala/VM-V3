@@ -94,6 +94,7 @@ const CombinedDrawer = ({
           toggle={() => {
             toggleDrawer2();
             setIsDrawerOpen((prev) => !prev);
+            setIsVisible(true);
           }}
         />
         <LeftDrawerToggleButton

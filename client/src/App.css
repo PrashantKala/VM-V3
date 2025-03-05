@@ -885,7 +885,7 @@ table td a:hover {
 .drawer-open, .asset-drawer-open {
   /* border: 2px solid black; */
   border: none;
-  /* background: #727070; */
+  background: white;
   color: white;
   z-index: 100000;
   width: 30px;
@@ -912,8 +912,8 @@ table td a:hover {
 .drawer-close, .asset-drawer-close {
   border: none;
   /* border: 2px solid black; */
-  background: #ede9e9;
-  color: white;
+  background-color: white;
+  /* color: white; */
   z-index: 10000;
   width: 30px;
   border-radius: 0% 30% 30% 0%;
@@ -1004,7 +1004,7 @@ table td a:hover {
     /* position: relative; */
     padding: 5px;
     width: 35vw;
-    height: 85%;
+    height: 83%;
     /* top: auto; */
     /* bottom: 0px; */
     /* transition: top 0.3s ease-in-out; */
@@ -1030,9 +1030,17 @@ table td a:hover {
   .drawer h2{
     font-size: 12px;
   }
+  .drawer-content{
+    margin: 0px;
+    margin-top: 10px;
+    padding: 2px;
+  }
+  .drawer-content h2{
+    font-size: 12px;
+  }
   .drawer-content img{
-    /* width: 30px; */
-    /* height: 30px; */
+    width: 20px;
+    height: 20px;
   }
   
   .drawer-content tbody{
@@ -1041,18 +1049,19 @@ table td a:hover {
     /* margin: 0px; */
   }
   .drawer-content tr{
-    /* font-size: .5rem; */
+    font-size: 6px;
     /* display: flex; */
     /* flex-direction:column; */
     /* border: 1px solid black; */
   }
 
   .drawer-content-services-info th, .drawer-content-services-info td{
-    /* font-size: .5rem; */
+    font-size: 6px;
 
   }
-  .drawer-content-services-info h2{
-    /* font-size: 1rem; */
+  .drawer-content-services-info {
+    margin: 0px;
+    margin-top: 20px;
   }
   
   .drawer-close {
@@ -1406,7 +1415,7 @@ table td a:hover {
 
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .chatbot-window {
     width: 90%;
     height: 70vh;
@@ -1423,15 +1432,53 @@ table td a:hover {
     width: 25px;
     height: 25px;
   }
-}
+} */
 @media (max-width: 480px) {
   .chatbot-window {
-    width: 80%;
+    width: 250px;
     height: 60vh;
-    bottom: 70px;
-    left: 5%;
-  }
 
+  }
+  .chatbot-header{
+    padding: 5px;
+    
+  }
+  .chatbot-header h3 {
+    margin: 0;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+  .chatbot-close {
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  .chatbot-messages {
+    padding: 5px;
+  }
+  .message {
+    margin: 0px;
+    padding: 0px;
+  }
+  .message-content {
+    padding: 3px 5px;
+    font-size: 10px;
+
+  }
+  .message-content p {
+    font-size: 10px;
+  }
+  .chatbot-input {
+    padding: 5px;
+  }
+  .chatbot-input input {
+    padding: 5px;
+  }
+  .chatbot-input button {
+    padding: 3px 5px;
+    margin-left: 3px;
+  }
+  
+/* 
   .chatbot-toggle {
     width: 50px;
     height: 50px;
@@ -1440,7 +1487,7 @@ table td a:hover {
   .bot-icon {
     width: 25px;
     height: 25px;
-  }
+  } */
 }
 
 
