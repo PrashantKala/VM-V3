@@ -39,6 +39,7 @@ const CustomCard = ({ toggleDrawer2,setIsImageModalOpen, isDrawerOpen, setIsDraw
       <div className="status">
         <span>Status:</span> <span className={`state-${status.toLowerCase()}`}>{status}</span>
       </div>
+      <div style={{ overflowX: "auto", maxWidth: "100%" }}>
       <table className='custom_card_table'>
         <thead>
           <tr>
@@ -71,12 +72,7 @@ const CustomCard = ({ toggleDrawer2,setIsImageModalOpen, isDrawerOpen, setIsDraw
           ))}
         </tbody>
       </table>
-      {/* {isImageModalOpen && (
-        <ImageModal
-          images={itemImages}
-          onClose={() => setIsImageModalOpen(false)} // Close the modal without affecting the card
-        />
-      )} */}
+      </div>
     </div>
   );
 };

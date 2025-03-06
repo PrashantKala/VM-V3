@@ -188,12 +188,14 @@
   color: red;
 }
 
-.custom_card_table {
-  /* border: 2px solid green; */
+.custom_card_table {  
   width: 100%;
   border-collapse: collapse;
   font-size: 0.85em;
+  overflow-x: auto;
+  
 }
+
 
 .custom_card_table thead {
   background-color: #f8f9fa;
@@ -208,6 +210,7 @@
 }
 
 .custom_card_table tr {
+  overflow-y: auto;
   cursor: pointer;
 }
 
