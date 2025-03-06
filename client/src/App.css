@@ -480,8 +480,8 @@ table td a:hover {
 
 
 .status-dot {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   position: absolute;
   top: -5px;
@@ -875,7 +875,7 @@ table td a:hover {
   transition: left 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  padding: 0px 20px 0px 20px;
+  /* padding: 0px 20px 0px 20px; */
   /* overflow-y: auto; */
   z-index: 1000;
   /* overflow: visible; */
@@ -1006,7 +1006,7 @@ table td a:hover {
     /* margin: 0px; */
     /* position: relative; */
     padding: 5px;
-    width: 35vw;
+    width: 30vw;
     height: 83%;
     /* top: auto; */
     /* bottom: 0px; */
@@ -1016,7 +1016,7 @@ table td a:hover {
 
 
   .asset-card img.asset-icon {
-    width: 15px;
+    width: 25px;
   }
   .status-dot{
     width: 10px;

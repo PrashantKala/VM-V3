@@ -22,6 +22,21 @@ const Chatbot = ({ assets }) => {
     error: "red"
   };
 
+  useEffect(() => {
+    let count = 1;
+    Object.keys(assets).forEach((asset) => {
+      assets[asset].forEach((category) => {
+        category.items.forEach((item) => {
+          if (item.status !== 'ready') {
+            count++;
+          }
+        });
+      });
+    });
+    setUnreadCount(count);
+  }, [assets]);
+  
+
   // Establish socket connection
   useEffect(() => {
     // const newSocket = io('http://localhost:5000'); // Connect to backend
@@ -104,7 +119,7 @@ const Chatbot = ({ assets }) => {
       setMessages((prevMessages) =>[{ text: "👋 Hi! I'm GeoCybermind. All assets are in operational. How can I assist you today?", sender: 'bot' },...prevMessages])
     }
   };
-
+  
   // Handle sending a message
   const handleSendMessage = () => {
     if (inputValue.trim() && socket) {
