@@ -22,8 +22,9 @@ const Chatbot = ({ assets }) => {
     error: "red"
   };
 
+  // Calculate unread count based on asset status
   useEffect(() => {
-    let count = 1;
+    let count = 0;
     Object.keys(assets).forEach((asset) => {
       assets[asset].forEach((category) => {
         category.items.forEach((item) => {
@@ -35,14 +36,9 @@ const Chatbot = ({ assets }) => {
     });
     setUnreadCount(count);
   }, [assets]);
-  
 
   // Establish socket connection
   useEffect(() => {
-    // const newSocket = io('http://localhost:5000'); // Connect to backend
-    // const newSocket = io('http://127.0.0.1:5000'); // Connect to backend
-    // const newSocket = io(process.env.REACT_APP_SOCKET_URL || "/");
-
     const newSocket = io('https://geocybermind.com', { path: '/bot/socket.io/', transports: ['websocket', 'polling'] });
     setSocket(newSocket);
 
@@ -72,12 +68,13 @@ const Chatbot = ({ assets }) => {
 
     newSocket.on('alert_message', handleAlert);
 
+    // Cleanup function
     return () => {
       newSocket.off('chat_message');
       newSocket.off('alert_message', handleAlert);
       newSocket.disconnect();
     };
-  }, [isOpen]); // Added `isOpen` dependency to trigger updates when chat closes  
+  }, [isOpen]); // Re-run effect when `isOpen` changes
 
   // Scroll to bottom when messages update
   useEffect(() => {
@@ -94,32 +91,84 @@ const Chatbot = ({ assets }) => {
     });
 
     if (!isOpen && messages.length === 0) {
-      startNewChat();
+      setInitialMessage();
     }
   };
 
-  // Start a new chat
+  // Start a new chat and reinitialize socket connection
   const startNewChat = () => {
+    // Disconnect the existing socket connection
+    if (socket) {
+      socket.disconnect();
+    }
+
+    // Create a new socket connection
+    const newSocket = io('https://geocybermind.com', { path: '/bot/socket.io/', transports: ['websocket', 'polling'] });
+    setSocket(newSocket);
+
+    // Listen for bot messages
+    newSocket.on('chat_message', (data) => {
+      const botMessage = data.choices[0].message.content;
+      setMessages((prevMessages) => [...prevMessages, { text: botMessage, sender: 'bot' }]);
+      setIsLoading(false);
+
+      if (!isOpen) {
+        setUnreadCount((prevCount) => prevCount + 1);
+      }
+    });
+
+    // Listen for alert messages
+    const handleAlert = (data) => {
+      console.log("Alert received:", data.message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: `${data.message}`, sender: 'bot' }
+      ]);
+
+      if (!isOpen) {
+        setUnreadCount((prevCount) => prevCount + 1);
+      }
+    };
+
+    newSocket.on('alert_message', handleAlert);
+
+    // Reset messages and set initial message
+    setMessages([{ text: "Hi, Welcome to geocybermind", sender: 'bot' }]);
+    setIsLoading(false);
+  };
+
+  // Set initial message based on asset status
+  const setInitialMessage = () => {
     let hasAlerts = false;
 
     Object.keys(assets).forEach((asset) => {
-      console.log("asset", asset)
+      console.log("asset", asset);
       assets[asset].forEach((category) => {
         category.items.forEach((item) => {
           if (item.status !== 'ready') {
             hasAlerts = true;
-            setMessages((prevMessages) => [...prevMessages, { text: `• <b>${item.name}</b> is currently in <span style="color: ${statusColors[item.status]}; font-weight: bold;">${item.status}</span> state.`, sender: 'bot' }]);
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              { text: `• <b>${item.name}</b> is currently in <span style="color: ${statusColors[item.status]}; font-weight: bold;">${item.status}</span> state.`, sender: 'bot' }
+            ]);
           }
-        })
+        });
       });
     });
+
     if (hasAlerts) {
-      setMessages((prevMessages) =>[{text: "⚠️ Hi, I noticed a few assets that might need your attention!!", sender: 'bot' },...prevMessages])
+      setMessages((prevMessages) => [
+        { text: "⚠️ Hi, I noticed a few assets that might need your attention!!", sender: 'bot' },
+        ...prevMessages
+      ]);
     } else {
-      setMessages((prevMessages) =>[{ text: "👋 Hi! I'm GeoCybermind. All assets are in operational. How can I assist you today?", sender: 'bot' },...prevMessages])
+      setMessages((prevMessages) => [
+        { text: "👋 Hi! I'm GeoCybermind. All assets are operational. How can I assist you today?", sender: 'bot' },
+        ...prevMessages
+      ]);
     }
   };
-  
+
   // Handle sending a message
   const handleSendMessage = () => {
     if (inputValue.trim() && socket) {
@@ -154,7 +203,6 @@ const Chatbot = ({ assets }) => {
             <div key={index} className={`message ${message.sender}`}>
               {message.sender === 'bot' ? (
                 <div className="message-content">
-                  {/* <ReactMarkdown>{message.text}</ReactMarkdown> */}
                   <ReactMarkdown rehypePlugins={[rehypeRaw]}>{message.text}</ReactMarkdown>
                 </div>
               ) : (
