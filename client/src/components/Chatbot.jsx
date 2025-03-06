@@ -22,41 +22,27 @@ const Chatbot = ({ assets }) => {
     error: "red"
   };
 
-  // Combined logic for unread count and alert messages
   useEffect(() => {
-    let count = 1; // Start count from 0
-    let hasAlerts = false;
-    const newMessages = [];
-
+    let count = 1;
     Object.keys(assets).forEach((asset) => {
       assets[asset].forEach((category) => {
         category.items.forEach((item) => {
           if (item.status !== 'ready') {
             count++;
-            hasAlerts = true;
-            newMessages.push({
-              text: `• <b>${item.name}</b> is currently in <span style="color: ${statusColors[item.status]}; font-weight: bold;">${item.status}</span> state.`,
-              sender: 'bot',
-            });
           }
         });
       });
     });
-
     setUnreadCount(count);
-
-    // If the chat is open and no messages exist, initialize the chat with alerts or a greeting
-    if (isOpen && messages.length === 0) {
-      if (hasAlerts) {
-        setMessages([{ text: "⚠️ Hi, I noticed a few assets that might need your attention!!", sender: 'bot' }, ...newMessages]);
-      } else {
-        setMessages([{ text: "👋 Hi! I'm GeoCybermind. All assets are operational. How can I assist you today?", sender: 'bot' }]);
-      }
-    }
-  }, [assets, isOpen, messages.length]); // Add dependencies to trigger updates
+  }, [assets]);
+  
 
   // Establish socket connection
   useEffect(() => {
+    // const newSocket = io('http://localhost:5000'); // Connect to backend
+    // const newSocket = io('http://127.0.0.1:5000'); // Connect to backend
+    // const newSocket = io(process.env.REACT_APP_SOCKET_URL || "/");
+
     const newSocket = io('https://geocybermind.com', { path: '/bot/socket.io/', transports: ['websocket', 'polling'] });
     setSocket(newSocket);
 
@@ -113,14 +99,27 @@ const Chatbot = ({ assets }) => {
   };
 
   // Start a new chat
-  const startNewChat = (newChat) => {
-    if(newChat){
-      setMessages([{ text: "👋 Hi! I'm GeoCybermind. Welcome to new chat?", sender: 'bot' }]); // Reset messages to trigger the useEffect logic
-    }else{
-      setMessages([]); // Reset messages to trigger the useEffect logic
+  const startNewChat = () => {
+    let hasAlerts = false;
+
+    Object.keys(assets).forEach((asset) => {
+      console.log("asset", asset)
+      assets[asset].forEach((category) => {
+        category.items.forEach((item) => {
+          if (item.status !== 'ready') {
+            hasAlerts = true;
+            setMessages((prevMessages) => [...prevMessages, { text: `• <b>${item.name}</b> is currently in <span style="color: ${statusColors[item.status]}; font-weight: bold;">${item.status}</span> state.`, sender: 'bot' }]);
+          }
+        })
+      });
+    });
+    if (hasAlerts) {
+      setMessages((prevMessages) =>[{text: "⚠️ Hi, I noticed a few assets that might need your attention!!", sender: 'bot' },...prevMessages])
+    } else {
+      setMessages((prevMessages) =>[{ text: "👋 Hi! I'm GeoCybermind. All assets are in operational. How can I assist you today?", sender: 'bot' },...prevMessages])
     }
   };
-
+  
   // Handle sending a message
   const handleSendMessage = () => {
     if (inputValue.trim() && socket) {
@@ -143,7 +142,7 @@ const Chatbot = ({ assets }) => {
         <div className="chatbot-header">
           <div>
             <h3>GeoCybermind</h3>
-            <button className="new-chat-button" onClick={()=>{startNewChat(true)}}>
+            <button className="new-chat-button" onClick={startNewChat}>
               <img src={newChatIcon} alt="New Chat" />
             </button>
           </div>
@@ -155,6 +154,7 @@ const Chatbot = ({ assets }) => {
             <div key={index} className={`message ${message.sender}`}>
               {message.sender === 'bot' ? (
                 <div className="message-content">
+                  {/* <ReactMarkdown>{message.text}</ReactMarkdown> */}
                   <ReactMarkdown rehypePlugins={[rehypeRaw]}>{message.text}</ReactMarkdown>
                 </div>
               ) : (
